@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.ico" />
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -39,8 +40,7 @@
   <nav class="flex justify-between items-center px-6 py-4 bg-[#001a33]">
     <div class="text-xl font-bold text-cyan-400">CSP Project</div>
     <ul class="flex gap-6 text-white">
-        <li><a href="index.html"></a></li>
-       <li><a href="ro.html" class="active">Home</a></li>
+      <li><a href="ro.html" class="hover:text-cyan-400">Home</a></li>
       <li><a href="about.html" class="hover:text-cyan-400">About</a></li>
       <li><a href="gallery.html" class="hover:text-cyan-400">Gallery</a></li>
       <li><a href="team.html" class="hover:text-cyan-400">Team</a></li>
@@ -60,9 +60,9 @@
   <section class="ripple py-16 px-4">
     <form id="contactForm" class="bg-white/10 backdrop-blur-md p-8 max-w-lg mx-auto rounded-xl shadow-2xl border border-cyan-500">
       <h2 class="text-center text-xl font-bold text-cyan-300 mb-6">Send a Message</h2>
-      <input type="text" placeholder="Your Name" required class="w-full p-3 mb-4 rounded bg-white/20 placeholder-white text-white"/>
-      <input type="email" placeholder="Your Email" required class="w-full p-3 mb-4 rounded bg-white/20 placeholder-white text-white"/>
-      <textarea rows="5" placeholder="Your Message" required class="w-full p-3 mb-4 rounded bg-white/20 placeholder-white text-white"></textarea>
+      <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full p-3 mb-4 rounded bg-white/20 placeholder-white text-white"/>
+      <input type="email" id="email" name="email" placeholder="Your Email" required class="w-full p-3 mb-4 rounded bg-white/20 placeholder-white text-white"/>
+      <textarea id="message" name="message" rows="5" placeholder="Your Message" required class="w-full p-3 mb-4 rounded bg-white/20 placeholder-white text-white"></textarea>
       <button type="submit" class="w-full py-3 bg-cyan-400 text-black font-bold rounded hover:bg-cyan-300 transition duration-300">Send 💌</button>
     </form>
   </section>
@@ -102,31 +102,29 @@
     }
     typeWriter();
 
-    // Success message
+    // Success popup
     const form = document.getElementById("contactForm");
     const popup = document.getElementById("successPopup");
-
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       popup.classList.remove("hidden");
-
       setTimeout(() => {
         popup.classList.add("hidden");
         form.reset();
       }, 3000);
     });
 
-    // Chatbot functionality
+    // Chatbot toggle
     function toggleBot() {
       document.getElementById("chatBox").classList.toggle("hidden");
     }
 
+    // Chatbot message
     function sendMessage() {
       const input = document.getElementById("userInput");
       const chat = document.getElementById("chatMessages");
-
-      const userText = input.value;
-      if (!userText.trim()) return;
+      const userText = input.value.trim();
+      if (!userText) return;
 
       chat.innerHTML += `<div><strong>You:</strong> ${userText}</div>`;
       input.value = "";
