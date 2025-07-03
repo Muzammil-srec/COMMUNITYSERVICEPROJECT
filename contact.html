@@ -16,12 +16,8 @@
       background: linear-gradient(to bottom, #001f3f, #000);
     }
     .ripple {
-      background: url('https://i.gifer.com/fyW.gif') center/cover no-repeat;
-      animation: floatUp 10s ease-in-out infinite;
-    }
-    @keyframes floatUp {
-      0% { background-position-y: 0; }
-      100% { background-position-y: -50px; }
+      background: url('backg.jpg') center/cover no-repeat;
+      background-attachment: fixed;
     }
     .blinking-cursor {
       animation: blink 1s infinite;
@@ -56,7 +52,7 @@
     <p class="text-cyan-100">Water Breathing Style</p>
   </section>
 
-  <!-- Ripple Form Section -->
+  <!-- Form Section with Local Background Image -->
   <section class="ripple py-16 px-4">
     <form id="contactForm" class="bg-white/10 backdrop-blur-md p-8 max-w-lg mx-auto rounded-xl shadow-2xl border border-cyan-500">
       <h2 class="text-center text-xl font-bold text-cyan-300 mb-6">Send a Message</h2>
